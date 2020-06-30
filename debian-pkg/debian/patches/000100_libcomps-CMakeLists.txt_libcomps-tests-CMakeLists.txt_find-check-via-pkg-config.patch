@@ -1,0 +1,66 @@
+Description: Search for libcheck via pkg-config instead of cmake; use static version.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+Within Debian, only the static libcheck library is shipped. cmake's find script
+will find that, but not use it correctly since the static library requires
+additional private libraries and definitions.
+
+Getting these via pkg-config is trivial, so switch to using this system
+instead.
+
+--- a/libcomps/CMakeLists.txt
++++ b/libcomps/CMakeLists.txt
+@@ -19,7 +19,8 @@ include_directories("${PROJECT_BINARY_DI
+ include_directories("${PROJECT_SOURCE_DIR}/src")
+ #include_directories("${PROJECT_SOURCE_DIR}/src/libcomps")
+ 
+-FIND_LIBRARY(CHECK_LIBRARY NAMES check)
++FIND_PACKAGE(PkgConfig)
++PKG_CHECK_MODULES(CHECK check REQUIRED)
+ FIND_LIBRARY(EXPAT_LIBRARY NAMES expat)
+ 
+ find_package(ZLIB REQUIRED)
+--- a/libcomps/tests/CMakeLists.txt
++++ b/libcomps/tests/CMakeLists.txt
+@@ -30,32 +30,32 @@ add_executable(test_comps ${testcomps_SO
+ add_executable(test_validate ${testvalidate_SOURCE})
+ 
+ #target_link_libraries(test_list libcomps)
+-#target_link_libraries(test_list ${CHECK_LIBRARY})
++#target_link_libraries(test_list ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ target_link_libraries(test_brtree libcomps)
+-target_link_libraries(test_brtree ${CHECK_LIBRARY})
++target_link_libraries(test_brtree ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ target_link_libraries(test_rtree libcomps)
+-target_link_libraries(test_rtree ${CHECK_LIBRARY})
++target_link_libraries(test_rtree ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ target_link_libraries(test_objrtree libcomps)
+-target_link_libraries(test_objrtree ${CHECK_LIBRARY})
++target_link_libraries(test_objrtree ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ target_link_libraries(test_validate libcomps)
+-target_link_libraries(test_validate ${CHECK_LIBRARY})
++target_link_libraries(test_validate ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ #target_link_libraries(test_rtree2 libcomps)
+-#target_link_libraries(test_rtree2 ${CHECK_LIBRARY})
++#target_link_libraries(test_rtree2 ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS)
+ 
+ #target_link_libraries(test_mrtree libcomps)
+-#target_link_libraries(test_mrtree ${CHECK_LIBRARY})
++#target_link_libraries(test_mrtree ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ target_link_libraries(test_parse libcomps)
+ target_link_libraries(test_parse expat)
+-target_link_libraries(test_parse ${CHECK_LIBRARY})
++target_link_libraries(test_parse ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ 
+ target_link_libraries(test_comps expat)
+-target_link_libraries(test_comps ${CHECK_LIBRARY})
++target_link_libraries(test_comps ${CHECK_STATIC_LIBRARIES} ${CHECK_STATIC_LDFLAGS})
+ target_link_libraries(test_comps libcomps)
+ set_target_properties(test_comps PROPERTIES COMPILE_FLAGS "${CMAKE_C_FLAGS} -g")
+ 

@@ -1,0 +1,3 @@
+usr/include/libcomps
+usr/lib/*/libcomps.so
+usr/lib/*/pkgconfig/libcomps.pc

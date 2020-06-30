@@ -1,0 +1,66 @@
+libcomps (0.1.11-1) unstable; urgency=medium
+
+  [ Mihai Moldovan ]
+  * New upstream release.
+  * debian/copyright:
+    + Update.
+  * debian/patches:
+    + Refresh.
+    + Add 800000_libcomps_src_python_src_pycomps.c_fix-method-descriptors-
+          for-python-3.8-45d0154a1e0bf167656d1ef4050de782452aad2c.patch
+      backporting a fix for Python 3.8 that Fedora also applies.
+    + Add 700000_Doxyfile.user.in_make-builds-reproducible.patch for making
+      builds (really the documentation) reproducible.
+  * debian/control:
+    + Add zlib1g-dev build dependency.
+    + Update to standards version 4.4.0.1. No changes necessary.
+    + Add run-time dependencies on libjs-jquery to libcomps-doc.
+    + Add run-time dependencies on libjs-{jquery,underscore} to
+      python-libcomps-doc.
+    + Change versioned dependency on dh to >= 9~.
+    + Drop old Python{,3}-Version fields. The base python packages are new
+      enough.
+    + Drop Python 2 binpkgs.
+    + Add Vcs-{Browser,Git} tags.
+    + Add Multi-Arch tags to binpkgs.
+  * debian/:
+    + Remove python-libcomps.{install,lintian-overrides,symbols}.
+    + Add {,python-}libcomps-doc.links.
+    + Add source/lintian-overrides.
+    + Add {,python-}libcomps-doc.doc-base.
+    + Add libcomps0.lintian-overrides.
+  * debian/{python3-libcomps,libcomps0}.symbols:
+    + Update. 
+    + Add Build-Depends-Package tag mentioning libcomps-dev package.
+  * debian/rules:
+    + Make dh_missing fail on uninstalled files.
+    + Same for dh_install, but only when using dh < 12.
+    + Drop Python 2 support.
+    + Remove integrated copies of {jquery,underscore}.js.
+    + Remove doctrees which are redundant and can potentially make builds
+      unreproducible.
+    + Quote $@ variable in dh call.
+  * debian/libcomps-doc.links:
+    + Replace jquery.js with system version.
+  * debian/python-libcomps-doc.links:
+    + Replace {jquery,underscore}.js with system versions.
+  * debian/{,python-}libcomps-doc.docs:
+    + Update to new build directory.
+  * debian/source/lintian-overrides:
+    + Silence warning about unused section referencing COPYING file. Debian
+      usually wants to pretend such files don't exist, but I don't...
+  * debian/libcomps-doc.doc-base:
+    + Register C interface documentation with doc-base.
+  * debian/python-libcomps-doc.doc-base:
+    + Register Python interface documentation with doc-base.
+  * debian/libcomps0.lintian-overrides:
+    + Ignore package name vs. SONAME mismatch. Upstream has been notified of
+      this bug.
+
+ -- Mihai Moldovan <ionic@ionic.de>  Sat, 07 Sep 2019 17:59:36 +0200
+
+libcomps (0.1.8-0x2go1) unstable; urgency=medium
+
+  * Initial release.
+
+ -- X2Go Release Manager <git-admin@x2go.org>  Thu, 01 Feb 2018 10:01:13 +0100
