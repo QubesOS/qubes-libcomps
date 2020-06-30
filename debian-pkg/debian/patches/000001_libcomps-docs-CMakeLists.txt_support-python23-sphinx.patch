@@ -1,0 +1,18 @@
+Description: Use the correct sphinx-build script, based upon python value.
+Author: Mihai Moldovan <ionic@ionic.de>
+
+Disabled here.
+
+--- a/libcomps/docs/CMakeLists.txt
++++ b/libcomps/docs/CMakeLists.txt
+@@ -9,8 +9,9 @@ endif(DOXYGEN_FOUND)
+ #message("dir ",${PROJECT_BINARY_DIR}})
+ file(MAKE_DIRECTORY "${PROJECT_BINARY_DIR}/docs/libcomps-py-doc")
+ 
++#set (SPHINX_BUILD "/usr/share/sphinx/scripts/python${PYTHON_DESIRED}/sphinx-build")
+ #add_custom_target(Docs-sphinx ALL
+-#                            COMMAND sphinx-build -b html . sphinx/build/html
++#                            COMMAND ${SPHINX_BUILD} -b html . sphinx/build/html
+ #                                WORKING_DIRECTORY .
+ #                                DEPENDS Docs
+ #                                COMMENT "sphinx docs"

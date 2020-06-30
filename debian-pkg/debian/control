@@ -1,0 +1,96 @@
+Source: libcomps
+Section: libs
+Priority: optional
+Maintainer: Mihai Moldovan <ionic@ionic.de>
+Uploaders: Frédéric Pierret <frederic.pierret@qubes-os.org>
+Build-Depends: debhelper (>= 9~),
+ dh-python,
+ python3-dev,
+ libpython3-dev,
+ cmake,
+ pkg-config,
+ libxml2-dev,
+ libexpat1-dev,
+ doxygen,
+ python3-sphinx,
+ check,
+ zlib1g-dev,
+Standards-Version: 4.4.0.1
+Homepage: https://github.com/rpm-software-management/libcomps
+Vcs-Browser: https://github.com/rpm-software-management/libcomps
+Vcs-Git: https://github.com/rpm-software-management/libcomps.git
+#Testsuite: autopkgtest-pkg-python
+
+Package: libcomps-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends},
+ libcomps0 (= ${binary:Version}),
+ pkg-config,
+ libglib2.0-dev,
+ libssl-dev,
+ libcurl4-gnutls-dev,
+ libattr1-dev,
+ libgpgme-dev,
+Description: Comps XML file manipulation library - development files
+ Libcomps is library for structure-like manipulation of content in
+ comps XML files. Supports reading/writing XML files and structure
+ modifications.
+ .
+ This package contains the development header files for the
+ libcomps library.
+
+Package: libcomps0
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends},
+Description: Comps XML file manipulation library - shared library
+ Libcomps is library for structure-like manipulation of content in
+ comps XML files. Supports reading/writing XML files and structure
+ modifications.
+ .
+ This package provides the libcomps shared library.
+
+Package: libcomps-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends},
+ libjs-jquery,
+Description: Documentation for the libcomps library (common documentation)
+ Libcomps is library for structure-like manipulation of content in
+ comps XML files. Supports reading/writing XML files and structure
+ modifications.
+ .
+ This package installs common documentation for the libcomps
+ C bindings.
+
+Package: python-libcomps-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends},
+ libjs-jquery,
+ libjs-underscore,
+Description: Python 2 and 3 bindings for the libcomps library (common documentation)
+ Libcomps is library for structure-like manipulation of content in
+ comps XML files. Supports reading/writing XML files and structure
+ modifications.
+ .
+ This package installs common documentation for the libcomps Python
+ 2 and 3 bindings.
+
+Package: python3-libcomps
+Architecture: any
+Multi-Arch: no
+Section: python
+Depends: ${python3:Depends}, ${shlibs:Depends}, ${misc:Depends},
+ libcomps0 (= ${binary:Version}),
+Suggests: python-libcomps-doc
+Description: Python bindings for the libcomps library (Python 3)
+ Libcomps is library for structure-like manipulation of content in
+ comps XML files. Supports reading/writing XML files and structure
+ modifications.
+ .
+ This package installs the libcomps library for Python 3.

@@ -1,0 +1,6 @@
+# Warning is fine, but let's ignore it for now.
+# Upstream has been notified per
+# https://github.com/rpm-software-management/libcomps/issues/51 and will likely
+# fix the issue.
+# This override can be dropped once a fixed version has been released.
+libcomps0: package-name-doesnt-match-sonames
