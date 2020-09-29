@@ -258,7 +258,6 @@ _libpycomps.so python3-libcomps #MINVER#
  PyCOMPS_validate@Base 0.1.8
  PyCOMPS_validate_nf@Base 0.1.8
  PyInit__libpycomps@Base 0.1.8
- UnfoObjListIt@Base 0.1.8
  __PyCOMPSSeq_set@Base 0.1.8
  __PyCOMPS_get_boolattr@Base 0.1.8
  __PyCOMPS_get_dict@Base 0.1.8

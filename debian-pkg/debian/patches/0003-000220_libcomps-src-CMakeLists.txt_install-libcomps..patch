@@ -1,0 +1,27 @@
+From 2adc09badc18cd2ab0efad03d8cc3a62b9a26bbf Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 16:49:57 +0200
+Subject: [PATCH 3/4] 000220_libcomps-src-CMakeLists.txt_install-libcomps.pc
+
+This patch should probably be upstreamed, if necessary in tandem with the
+libcomps.pc generation patch.
+---
+ libcomps/src/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libcomps/src/CMakeLists.txt b/libcomps/src/CMakeLists.txt
+index 55ad174..20ab8be 100644
+--- a/libcomps/src/CMakeLists.txt
++++ b/libcomps/src/CMakeLists.txt
+@@ -72,5 +72,8 @@ if (ENABLE_DEVELOPMENT)
+           DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
+ endif ()
+ 
++install (FILES "${CMAKE_CURRENT_BINARY_DIR}/libcomps.pc"
++         DESTINATION "${LIB_INST_DIR}/pkgconfig/")
++
+ add_subdirectory(python)
+ 
+-- 
+2.25.1
+

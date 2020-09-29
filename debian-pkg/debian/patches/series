@@ -1,8 +1,4 @@
-000001_libcomps-docs-CMakeLists.txt_support-python23-sphinx.patch
-000100_libcomps-CMakeLists.txt_libcomps-tests-CMakeLists.txt_find-check-via-pkg-config.patch
-000110_libcomps-src-CMakeLists.txt_allow-LIB_INST_DIR-override.patch
-000200_libcomps.pc.in_allow-prefix-override.patch
-000210_libcomps-src-CMakeLists.txt_generate-libcomps.pc.patch
-000220_libcomps-src-CMakeLists.txt_install-libcomps.pc.patch
-700000_Doxyfile.user.in_make-builds-reproducible.patch
-800000_libcomps_src_python_src_pycomps.c_fix-method-descriptors-for-python-3.8-45d0154a1e0bf167656d1ef4050de782452aad2c.patch
+0001-000001_libcomps-docs-CMakeLists.txt_support-python23.patch
+0002-000100_libcomps-CMakeLists.txt_libcomps-tests-CMakeL.patch
+0003-000220_libcomps-src-CMakeLists.txt_install-libcomps..patch
+0004-700000_Doxyfile.user.in_make-builds-reproducible.patch

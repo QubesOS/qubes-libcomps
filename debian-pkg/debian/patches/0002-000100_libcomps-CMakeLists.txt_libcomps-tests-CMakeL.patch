@@ -1,5 +1,8 @@
-Description: Search for libcheck via pkg-config instead of cmake; use static version.
-Author: Mihai Moldovan <ionic@ionic.de>
+From 3e30543a578f9d26429f51dada416835092d26fb Mon Sep 17 00:00:00 2001
+From: Mihai Moldovan <ionic@ionic.de>
+Date: Tue, 29 Sep 2020 16:49:57 +0200
+Subject: [PATCH 2/4] 
+ 000100_libcomps-CMakeLists.txt_libcomps-tests-CMakeLists.txt_find-check-via-pkg-config
 
 Within Debian, only the static libcheck library is shipped. cmake's find script
 will find that, but not use it correctly since the static library requires
@@ -7,22 +10,30 @@ additional private libraries and definitions.
 
 Getting these via pkg-config is trivial, so switch to using this system
 instead.
+---
+ libcomps/CMakeLists.txt       |  3 ++-
+ libcomps/tests/CMakeLists.txt | 18 +++++++++---------
+ 2 files changed, 11 insertions(+), 10 deletions(-)
 
+diff --git a/libcomps/CMakeLists.txt b/libcomps/CMakeLists.txt
+index d8d628a..7882099 100644
 --- a/libcomps/CMakeLists.txt
 +++ b/libcomps/CMakeLists.txt
-@@ -19,7 +19,8 @@ include_directories("${PROJECT_BINARY_DI
- include_directories("${PROJECT_SOURCE_DIR}/src")
+@@ -32,7 +32,8 @@ include_directories("${PROJECT_SOURCE_DIR}/src")
  #include_directories("${PROJECT_SOURCE_DIR}/src/libcomps")
  
--FIND_LIBRARY(CHECK_LIBRARY NAMES check)
-+FIND_PACKAGE(PkgConfig)
-+PKG_CHECK_MODULES(CHECK check REQUIRED)
- FIND_LIBRARY(EXPAT_LIBRARY NAMES expat)
+ if (ENABLE_TESTS)
+-  find_library(CHECK_LIBRARY NAMES check)
++  find_package(PkgConfig)
++  pkg_check_modules(CHECK check REQUIRED)
+ endif()
+ find_library(EXPAT_LIBRARY NAMES expat)
  
- find_package(ZLIB REQUIRED)
+diff --git a/libcomps/tests/CMakeLists.txt b/libcomps/tests/CMakeLists.txt
+index 23ced74..b324512 100644
 --- a/libcomps/tests/CMakeLists.txt
 +++ b/libcomps/tests/CMakeLists.txt
-@@ -30,32 +30,32 @@ add_executable(test_comps ${testcomps_SO
+@@ -30,32 +30,32 @@ add_executable(test_comps ${testcomps_SOURCE})
  add_executable(test_validate ${testvalidate_SOURCE})
  
  #target_link_libraries(test_list libcomps)
@@ -64,3 +75,6 @@ instead.
  target_link_libraries(test_comps libcomps)
  set_target_properties(test_comps PROPERTIES COMPILE_FLAGS "${CMAKE_C_FLAGS} -g")
  
+-- 
+2.25.1
+
