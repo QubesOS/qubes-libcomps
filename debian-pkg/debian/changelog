@@ -4,7 +4,7 @@ libcomps (0.1.15-1) unstable; urgency=medium
 
  -- Frédéric Pierret (fepitre) <frederic.pierret@qubes-os.org>  Sun, 11 Oct 2020 11:56:46 +0200
 
-libcomps (0.1.11-1) --release; urgency=medium
+libcomps (0.1.11-1) unstable; urgency=medium
 
   * Initial commit
 
