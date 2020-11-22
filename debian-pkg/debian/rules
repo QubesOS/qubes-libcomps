@@ -8,11 +8,11 @@ DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/default.mk
 
 %:
-	dh "${@}" --parallel --buildsystem=cmake --with=python3
+	dh "${@}" --buildsystem=cmake --with=python3
 
 override_dh_auto_configure:
-	dh_auto_configure --sourcedirectory=libcomps/ --builddirectory=build -- -DPYTHON_DESIRED:STRING=3 \
-                                                                                -DLIB_INST_DIR:PATH="/usr/lib/$(shell dpkg-architecture -qDEB_BUILD_MULTIARCH)"
+	dh_auto_configure --sourcedirectory=libcomps/ --builddirectory=build -- \
+		-DPYTHON_DESIRED:STRING=3 -DLIB_INST_DIR:PATH="/usr/lib/$(shell dpkg-architecture -qDEB_BUILD_MULTIARCH)"
 
 override_dh_auto_build:
 	dh_auto_build --builddirectory=build -- all docs pydocs
