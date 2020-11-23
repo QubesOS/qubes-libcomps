@@ -24,6 +24,8 @@ override_dh_auto_install:
 	# Use system-provided files.
 	rm -fv 'build/src/python/docs/html/_static/jquery.js' 'build/src/python/docs/html/_static/underscore.js' \
 	       'build/docs/libcomps-doc/jquery.js'
+	# replace buildpath in xml
+	find 'build/docs/libcomps-doc/xml' -name "*.xml" -exec sed -i "s|$(PWD)|.|g" {} \;
 
 override_dh_auto_clean:
 	rm -rf libcomps/docs/Doxyfile.user
