@@ -1,0 +1,54 @@
+From 981b5091e30ab2b98cf5e5dff0926503873d4a7b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
+ <frederic.pierret@qubes-os.org>
+Date: Mon, 23 Nov 2020 15:12:55 +0100
+Subject: [PATCH] Disable XML doc generation
+
+---
+ libcomps/docs/Doxyfile.user               | 2 +-
+ libcomps/docs/Doxyfile.user.in            | 2 +-
+ libcomps/src/python/docs/Doxyfile.user.in | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libcomps/docs/Doxyfile.user b/libcomps/docs/Doxyfile.user
+index 09ab7b4..9a9b554 100644
+--- a/libcomps/docs/Doxyfile.user
++++ b/libcomps/docs/Doxyfile.user
+@@ -1386,7 +1386,7 @@ MAN_LINKS              = NO
+ # generate an XML file that captures the structure of
+ # the code including all documentation.
+ 
+-GENERATE_XML           = YES
++GENERATE_XML           = NO
+ 
+ # The XML_OUTPUT tag is used to specify where the XML pages will be put.
+ # If a relative path is entered the value of OUTPUT_DIRECTORY will be
+diff --git a/libcomps/docs/Doxyfile.user.in b/libcomps/docs/Doxyfile.user.in
+index fc0ce52..af1ae52 100644
+--- a/libcomps/docs/Doxyfile.user.in
++++ b/libcomps/docs/Doxyfile.user.in
+@@ -1408,7 +1408,7 @@ MAN_LINKS              = NO
+ # generate an XML file that captures the structure of
+ # the code including all documentation.
+ 
+-GENERATE_XML           = YES
++GENERATE_XML           = NO
+ 
+ # The XML_OUTPUT tag is used to specify where the XML pages will be put.
+ # If a relative path is entered the value of OUTPUT_DIRECTORY will be
+diff --git a/libcomps/src/python/docs/Doxyfile.user.in b/libcomps/src/python/docs/Doxyfile.user.in
+index 5da4c1e..1dbbf5f 100644
+--- a/libcomps/src/python/docs/Doxyfile.user.in
++++ b/libcomps/src/python/docs/Doxyfile.user.in
+@@ -1386,7 +1386,7 @@ MAN_LINKS              = NO
+ # generate an XML file that captures the structure of
+ # the code including all documentation.
+ 
+-GENERATE_XML           = YES
++GENERATE_XML           = NO
+ 
+ # The XML_OUTPUT tag is used to specify where the XML pages will be put.
+ # If a relative path is entered the value of OUTPUT_DIRECTORY will be
+-- 
+2.26.2
+
