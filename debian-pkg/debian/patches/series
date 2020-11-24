@@ -1,3 +1,5 @@
 0001-libcomps-CMakeLists.txt_libcomps-tests-CMakeL.patch
 0002-libcomps-src-CMakeLists.txt_install-libcomps..patch
 0003-Doxyfile.user.in_make-builds-reproducible.patch
+0004-Set-CMAKE_SKIP_RPATH-to-TRUE.patch
+

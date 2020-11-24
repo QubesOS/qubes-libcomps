@@ -1,0 +1,47 @@
+From ec795869a823f917cea8438456a5eb2dc3c92a9f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Pierret=20=28fepitre=29?=
+ <frederic.pierret@qubes-os.org>
+Date: Mon, 23 Nov 2020 22:48:48 +0100
+Subject: [PATCH] Set CMAKE_SKIP_RPATH to TRUE
+
+---
+ libcomps/src/CMakeLists.txt             | 3 ++-
+ libcomps/src/python/docs/CMakeLists.txt | 2 ++
+ libcomps/src/python/src/CMakeLists.txt  | 2 ++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/libcomps/src/CMakeLists.txt b/libcomps/src/CMakeLists.txt
+index 20ab8be..d7b18a2 100644
+--- a/libcomps/src/CMakeLists.txt
++++ b/libcomps/src/CMakeLists.txt
+@@ -75,5 +75,6 @@ endif ()
+ install (FILES "${CMAKE_CURRENT_BINARY_DIR}/libcomps.pc"
+          DESTINATION "${LIB_INST_DIR}/pkgconfig/")
+ 
+-add_subdirectory(python)
++SET(CMAKE_SKIP_RPATH TRUE)
+ 
++add_subdirectory(python)
+diff --git a/libcomps/src/python/docs/CMakeLists.txt b/libcomps/src/python/docs/CMakeLists.txt
+index b0467b9..9b55043 100644
+--- a/libcomps/src/python/docs/CMakeLists.txt
++++ b/libcomps/src/python/docs/CMakeLists.txt
+@@ -30,3 +30,5 @@ add_custom_command(TARGET pydocs COMMAND python${pversion} ${SPHINX_EXECUTABLE}
+                                   "${CMAKE_CURRENT_SOURCE_DIR}/doc-sources/"
+                                   "${CMAKE_CURRENT_BINARY_DIR}/html/"
+                                  COMMENT "LDLP $ENV{LD_LIBRARY_PATH}")
++
++SET(CMAKE_SKIP_RPATH TRUE)
+diff --git a/libcomps/src/python/src/CMakeLists.txt b/libcomps/src/python/src/CMakeLists.txt
+index adabb31..2515c4d 100644
+--- a/libcomps/src/python/src/CMakeLists.txt
++++ b/libcomps/src/python/src/CMakeLists.txt
+@@ -132,3 +132,5 @@ ELSE ()
+     # Version has to be passed as last argument.
+     INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_SOURCE_DIR}/../setup_for_python_metadata.py install_egg_info --install-dir \$ENV{DESTDIR}/${PYTHON_INSTALL_DIR}/ ${VERSION})")
+ ENDIF (SKBUILD)
++
++SET(CMAKE_SKIP_RPATH TRUE)
+-- 
+2.26.2
+
