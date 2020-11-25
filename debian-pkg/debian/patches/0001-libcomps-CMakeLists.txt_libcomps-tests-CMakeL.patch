@@ -1,8 +1,7 @@
 From 3e30543a578f9d26429f51dada416835092d26fb Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 16:49:57 +0200
-Subject: [PATCH 2/4] 
- 000100_libcomps-CMakeLists.txt_libcomps-tests-CMakeLists.txt_find-check-via-pkg-config
+Subject: [PATCH] Search for libcheck via pkg-config instead of cmake; use static version.
 
 Within Debian, only the static libcheck library is shipped. cmake's find script
 will find that, but not use it correctly since the static library requires

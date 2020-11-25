@@ -1,7 +1,7 @@
 From c6fca82b2db4d80a3d5d6df39264780218cf694e Mon Sep 17 00:00:00 2001
 From: Mihai Moldovan <ionic@ionic.de>
 Date: Tue, 29 Sep 2020 16:49:57 +0200
-Subject: [PATCH 4/4] 700000_Doxyfile.user.in_make-builds-reproducible
+Subject: [PATCH] Make documentation builds reproducible.
 
 Doxygen includes the full path to sources in its documentation by default,
 which makes builds non-reproducible.

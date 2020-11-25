@@ -1,4 +1,3 @@
-0001-000001_libcomps-docs-CMakeLists.txt_support-python23.patch
-0002-000100_libcomps-CMakeLists.txt_libcomps-tests-CMakeL.patch
-0003-000220_libcomps-src-CMakeLists.txt_install-libcomps..patch
-0004-700000_Doxyfile.user.in_make-builds-reproducible.patch
+0001-libcomps-CMakeLists.txt_libcomps-tests-CMakeL.patch
+0002-libcomps-src-CMakeLists.txt_install-libcomps..patch
+0003-Doxyfile.user.in_make-builds-reproducible.patch
