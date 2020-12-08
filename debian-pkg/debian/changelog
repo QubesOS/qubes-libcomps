@@ -1,3 +1,16 @@
+libcomps (0.1.15-2) unstable; urgency=medium
+
+  [ Frédéric Pierret (fepitre) ]
+  * Add .gitlab-ci.yml
+  * rules: make lintian happier
+  * Remove python23 patch and reformat patches
+  * Add reproducible=+fixfilepath
+  * docs: replace buildpath in generated xml
+  * Set CMAKE_SKIP_RPATH to TRUE
+  * Disable XML doc generation
+
+ -- Marek Marczykowski-Górecki <marmarek@invisiblethingslab.com>  Tue, 08 Dec 2020 03:00:36 +0100
+
 libcomps (0.1.15-1.1) unstable; urgency=medium
 
   * debian: fix changelog
